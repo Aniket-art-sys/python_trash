@@ -1,2 +1,2 @@
 # python_trash
-trash/test python code 
+trash/test python code ( not worth using )
