@@ -1,3 +1,6 @@
+import random
+
+
 def create_board():
     return [0] * 9
 def print_board(board,type):
@@ -44,6 +47,41 @@ def check(board):
         if board[a] == board[b] == board[c] and board[a] != 0:
             return board[a]
     return 0
+def ai_move(board,no):
+    if(no==1):
+        pos=[4,0,2,6,8]
+        for i in pos:
+            if board[i] == 0:
+                return i
+                break
+    elif(no%2==1):
+        pos = [
+            (0, 1, 2),
+            (3, 4, 5),
+            (6, 7, 8),
+            (0, 3, 6),
+            (1, 4, 7),
+            (2, 5, 8),
+            (0, 4, 8),
+            (2, 4, 6)
+        ]
+        for a, b, c in pos:
+            if sum([board[a], board[b], board[c]]) == 2:
+                if (board[a] == 0):
+                    return a
+                    break
+                if (board[b] == 0):
+                    return b
+                    break
+                if (board[c] == 0):
+                    return c
+                    break
+        else:
+            for i in range(0, 9):
+                u = random.randrange(0, 9)
+                if board[u] == 0:
+                    break
+            return u
 def play():
     board = create_board()
     for _ in range(9):
@@ -51,6 +89,7 @@ def play():
         print_board(board,False)
         print("status of the board")
         print_board(board,True)
+        print(ai_move(board,_))
         plays(board,_)
         if(check(board)==1):
             print_board(board, True)
