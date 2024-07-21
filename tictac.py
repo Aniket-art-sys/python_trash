@@ -89,7 +89,7 @@ def play():
         print_board(board,False)
         print("status of the board")
         print_board(board,True)
-        print(ai_move(board,_))
+        print("ai move",ai_move(board,_))
         plays(board,_)
         if(check(board)==1):
             print_board(board, True)
