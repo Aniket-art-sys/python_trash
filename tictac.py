@@ -52,8 +52,7 @@ def check(board):
     return 0
 def ai_move(board,no):
     if(no==1):
-        pos=[4,0,2,6,8]
-        for i in pos:
+        for i in [4,0,2,6,8]:
             if board[i] == 0:
                 return i
                 break
@@ -96,8 +95,7 @@ def ai_move(board,no):
         else:
             for a,b,c in pos2:
                 if board[a]==1 and board[b]==-1 and board[c]==1 :
-                    pos = [1, 3, 5, 7]
-                    for i in pos:
+                    for i in [1, 3, 5, 7]:
                         if board[i] == 0:
                             return i
                             break
@@ -109,11 +107,12 @@ def ai_move(board,no):
                                 return i
                                 break
                 else:
-                    for i in range(0, 9):
+                    while(True):
                         u = random.randrange(0, 9)
                         if board[u] == 0:
+                            return u
                             break
-                    return u
+                    
 def play():
     board = create_board()
     for _ in range(9):
