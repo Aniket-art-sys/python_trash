@@ -51,68 +51,51 @@ def check(board):
             return board[a]
     return 0
 def ai_move(board,no):
-    if(no==1):
-        for i in [4,0,2,6,8]:
+    if no == 1:
+        for i in [4, 0, 2, 6, 8]:
             if board[i] == 0:
                 return i
-                break
-    elif(no%2==1):
+    elif no % 2 == 1:
         pos = [
-            (0, 1, 2),
-            (3, 4, 5),
-            (6, 7, 8),
-            (0, 3, 6),
-            (1, 4, 7),
-            (2, 5, 8),
-            (0, 4, 8),
-            (2, 4, 6)
+            (0, 1, 2), (3, 4, 5), (6, 7, 8),
+            (0, 3, 6), (1, 4, 7), (2, 5, 8),
+            (0, 4, 8), (2, 4, 6)
         ]
         pos2 = [
-            (0,4,8),
-            (2,4,6)
+            (0, 4, 8), (2, 4, 6)
         ]
         for a, b, c in pos:
             if sum([board[a], board[b], board[c]]) == -2:
-                if (board[a] == 0):
+                if board[a] == 0:
                     return a
-                    break
-                if (board[b] == 0):
+                if board[b] == 0:
                     return b
-                    break
-                if (board[c] == 0):
+                if board[c] == 0:
                     return c
-                    break
             elif sum([board[a], board[b], board[c]]) == 2:
-                if (board[a] == 0):
+                if board[a] == 0:
                     return a
-                    break
-                if (board[b] == 0):
+                if board[b] == 0:
                     return b
-                    break
-                if (board[c] == 0):
+                if board[c] == 0:
                     return c
-                    break
-        else:
-            for a,b,c in pos2:
-                if board[a]==1 and board[b]==-1 and board[c]==1 :
-                    for i in [1, 3, 5, 7]:
-                        if board[i] == 0:
-                            return i
-                            break
-            else:
-                for a, b, c in pos2:
-                    if (board[a] == -1 and board[b] == 1 and board[c] == 1) or (board[a] == 1 and board[b] == 1 and board[c] == -1)  :
-                        for i in [0,2,6,8]:
-                            if board[i] == 0:
-                                return i
-                                break
-                else:
-                    while(True):
-                        u = random.randrange(0, 9)
-                        if board[u] == 0:
-                            return u
-                            break
-                    
+        for a, b, c in pos2:
+            if board[a] == 1 and board[b] == -1 and board[c] == 1:
+                for i in [1, 3, 5, 7]:
+                    if board[i] == 0:
+                        return i
+        for a, b, c in pos2:
+            if (board[a] == -1 and board[b] == 1 and board[c] == 1) or (
+                    board[a] == 1 and board[b] == 1 and board[c] == -1):
+                for i in [0, 2, 6, 8]:
+                    if board[i] == 0:
+                        return i
+        while True:
+            u = random.randrange(0, 9)
+            if board[u] == 0:
+                return u
+
+
 def play():
     board = create_board()
     for _ in range(9):
