@@ -102,11 +102,18 @@ def ai_move(board,no):
                             return i
                             break
             else:
-                for i in range(0, 9):
-                    u = random.randrange(0, 9)
-                    if board[u] == 0:
-                        break
-                return u
+                for a, b, c in pos2:
+                    if (board[a] == -1 and board[b] == 1 and board[c] == 1) or (board[a] == 1 and board[b] == 1 and board[c] == -1)  :
+                        for i in [0,2,6,8]:
+                            if board[i] == 0:
+                                return i
+                                break
+                else:
+                    for i in range(0, 9):
+                        u = random.randrange(0, 9)
+                        if board[u] == 0:
+                            break
+                    return u
 def play():
     board = create_board()
     for _ in range(9):
@@ -126,4 +133,5 @@ def play():
     else:
         print_board(board, True)
         print("It's a tie!")
-play()
+while(True):
+    play()
