@@ -73,3 +73,9 @@ def import_data (name):
     nlist.pop()
     f.close()
     return nlist
+def create_nes ():
+    f = open("data.txt","w")
+    f.write("33 33 34")
+    f.close()
+    f = open("pastgames.txt","w")
+    f.close()
