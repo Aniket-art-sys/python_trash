@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>omniscient reader's viewpoint</title>
+    <style>
+        img {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+        .loading {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="manga-container"></div>
+    <div class="loading" id="loading">Loading more pages...</div>
+
+    <script>
+        let chapter = 2;  // Starting chapter
+        let page = 1;     // Starting page
+        let baseUrl = "https://cdn.black-clover.org/file/flanbox/omniscient-reader/chapter-";
+        let loading = false;
+
+        // Function to check if a page exists
+        async function pageExists(chapter, page) {
+            const imageUrl = `${baseUrl}${chapter}/${page}.webp`;
+            try {
+                const response = await fetch(imageUrl, { method: 'HEAD' });
+                return response.ok; // True if the page exists
+            } catch (error) {
+                return false; // Page does not exist
+            }
+        }
+
+        // Function to load the next page
+        async function loadNextPage() {
+            if (loading) return;
+            loading = true;
+
+            while (await pageExists(chapter, page)) {
+                const img = document.createElement('img');
+                img.src = `${baseUrl}${chapter}/${page}.webp`;
+                document.getElementById('manga-container').appendChild(img);
+                page++;
+            }
+
+            // When a chapter ends, move to the next one
+            chapter++;
+            page = 1;
+
+            loading = false;
+        }
+
+        // Infinite scroll detection
+        window.addEventListener('scroll', async () => {
+            const loadingDiv = document.getElementById('loading');
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 && !loading) {
+                await loadNextPage();
+            }
+        });
+
+        // Initial load
+        loadNextPage();
+    </script>
+</body>
+</html>

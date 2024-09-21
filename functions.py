@@ -13,10 +13,10 @@ def split (limit, pr, ranlim):
     return likey
 def choice (list,lastmoves):
     listing = [0]*list[0] + [1]*list[1] + [2]*list[2]
-    if lastmoves[len(lastmoves)-1] == lastmoves[len(lastmoves)-2] and listing[lastmoves[len(lastmoves)-1]]>21:
-        for i in range(listing.count(lastmoves[len(lastmoves-1)])-10):
+    if lastmoves[-1] == lastmoves[-2] and listing[lastmoves[-1]]>21:
+        for i in range(listing.count(lastmoves[-1])-10):
             try:
-                listing.remove(lastmoves[len(lastmoves)-1])
+                listing.remove(lastmoves[-1])
             except:
                 break
     return listing[random.randrange(len(listing))]

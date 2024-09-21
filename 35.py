@@ -1,0 +1,1 @@
+print(''.join([''.join([str(i) for i in range(1,n+2)]+["\n"]) for n in range(int(input("enter number")))]))

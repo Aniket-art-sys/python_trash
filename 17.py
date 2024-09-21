@@ -1,0 +1,1 @@
+print(list(m for m in range(2,int(input("enter number"))) if not "y" in list("y" if m%i==0 else "n" for i in range(2,(int(m**1/2))+1))))

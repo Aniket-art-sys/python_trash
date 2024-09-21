@@ -1,8 +1,20 @@
 from urllib.error import URLError
 
 print("stone,paper,sizer")
-import random
 import urllib.request
+import urllib
+ver_c = 0
+print("checking for update")
+try:
+    with urllib.request.urlopen("https://raw.githubusercontent.com/Aniket-art-sys/python_trash/main/ver.txt") as f:
+        ver_n=int(f.read().decode("utf-8"))
+    if not ver_c == ver_n:
+        print("update available")
+        print(ver_c, "-->", ver_n)
+    else:
+        print("uptodate")
+except:
+    print("no data connection")
 import os
 for i in range(3):
     if not os.path.exists("data.txt"):

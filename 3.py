@@ -1,0 +1,8 @@
+print('Floor Division')
+n1=int(input('Enter Number'))
+n2=int(input('Enter Number'))
+print(str(n1)+'/'+str(n2),'Rounded off is',n1//n2)
+print('Modulus')
+n1=int(input('Enter Number'))
+n2=int(input('Enter Number'))
+print(str(n1)+' divided by '+str(n2),'Reminder is',n1%n2)

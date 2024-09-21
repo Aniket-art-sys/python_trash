@@ -1,0 +1,10 @@
+print("hello word")
+word = "hello"
+print("cancatentaion"+word)
+print("repetition"*len(word))
+number = int(input("enter number"))
+print("floor division",number,"//",number-5,number//number-5)
+print("modulus",number,"%5 = ", number%5)
+age= int(input("eneter age"))
+print(" can vote " if age>=18 else "can't vote" if age>0 else "wrong age" )
+formula = ( ("sq",)
