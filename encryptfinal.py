@@ -1,6 +1,9 @@
 choice = 0
 sentence =input("enter sentence")
-key = input("enter key")
+key_ = input("enter key")
+def fixer (sen,key):
+    return (key * (len(sen) // len(key)) + key[:len(sen) % len(key)])
+key = fixer(sentence,key_)
 def breaker (string):
     return [ord(i) for i in string]
 def joiner (list):
@@ -18,4 +21,3 @@ if choice ==2:
     sentence = sentence.replace("[","").replace("]","").replace(",","").split(" ")
     sentence_ = [int(i) for i in sentence]
     print(joiner(xorer(sentence_,breaker(key))))
-
